@@ -1,15 +1,3 @@
-flowchart TD
-    A[ETL XML 文件包] -->|读取 & 解析| B[解析 & 转换规则]
-    B --> C1[忽略时间参数]
-    C1 --> C2[注释 MYSQL 组件]
-    B --> D1[表名转小写]
-    D1 --> D2[处理 HIVE SQL]
-    C2 --> E[生成 HQL 脚本]
-    D2 --> E[生成 HQL 脚本]
-    E --> F1[主流程_HQL.sql]
-    E --> F2[依赖_等待数据表集合.json]
-    F1 --> G[输出文件]
-    F2 --> G[输出文件]
 
 # 星海 HQL 装修工具 🚀
 
@@ -58,6 +46,13 @@ python kettle_to_hql_general.py --zip C:\Users\westw\Downloads\20260726.zip --ou
 TMP_CDMA_CHARGE_TJ0_${month_no}
 输出：
 schema_dev.temp_cdma_charge_tj0_${month_no}
+📤 输出文件说明
+运行完成后，工具会在指定的输出目录生成以下文件：
+
+| 文件类型 | 文件名示例 | 内容说明 |
+| --- | --- | --- |
+| **主流程 HQL 脚本** | ``main_flow_hql.sql`` | 按执行顺序还原的主流程脚本，包含所有核心 HIVE SQL 逻辑 |
+| **依赖等待数据表集合 JSON** | ``wait_tables.json`` | 记录流程中涉及的等待数据表集合，用于后续依赖分析或调度控制 |
 🏷️ 项目信息
 语言：Python
 
