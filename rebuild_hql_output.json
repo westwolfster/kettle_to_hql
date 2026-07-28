@@ -1,0 +1,32 @@
+{
+    "rebuild_hql": {
+        "etl_1":{
+            "name":"etl_name_here",
+            "wait_table":[
+                "wait_table_name1",
+                "wait_table_name2",
+                "wait_table_name3",
+                "wait_table_name4"
+            ],
+            "output_table":[
+                "output_table_name1",
+                "output_table_name2",
+                "output_table_name3"
+            ]
+        },
+        "etl_2":{
+            "name":"etl_name_here",
+            "wait_table":[
+                "wait_table_name1",
+                "wait_table_name2",
+                "wait_table_name3",
+                "wait_table_name4"
+            ],
+            "output_table":[
+                "output_table_name1",
+                "output_table_name2",
+                "output_table_name3"
+            ]
+        }
+    }
+}
