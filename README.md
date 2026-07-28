@@ -40,17 +40,3 @@
 ```bash
 python kettle_to_hql_general.py --zip <xml文件包路径>.zip --out <输出文件夹路径> --schema <模式名称>
 
-
-示例
-python kettle_to_hql_general.py --zip C:\Users\westw\Downloads\20260726.zip --out C:\Users\westw\Downloads\output_20260726 --schema wt_day
-
-🏷️ 项目信息
-语言：Python
-
-适用场景：ETL 流程脚本转换、数据中台开发
-
-作者：Grok
-
-📜 License
-本项目遵循 MIT License 开源协议，欢迎自由使用与修改。
-
