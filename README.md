@@ -39,20 +39,11 @@
 
 ```bash
 python kettle_to_hql_general.py --zip <xml文件包路径>.zip --out <输出文件夹路径> --schema <模式名称>
+
+
 示例
 python kettle_to_hql_general.py --zip C:\Users\westw\Downloads\20260726.zip --out C:\Users\westw\Downloads\output_20260726 --schema wt_day
-📂 示例转换
-输入：
-TMP_CDMA_CHARGE_TJ0_${month_no}
-输出：
-schema_dev.temp_cdma_charge_tj0_${month_no}
-📤 输出文件说明
-运行完成后，工具会在指定的输出目录生成以下文件：
 
-| 文件类型 | 文件名示例 | 内容说明 |
-| --- | --- | --- |
-| **主流程 HQL 脚本** | ``main_flow_hql.sql`` | 按执行顺序还原的主流程脚本，包含所有核心 HIVE SQL 逻辑 |
-| **依赖等待数据表集合 JSON** | ``wait_tables.json`` | 记录流程中涉及的等待数据表集合，用于后续依赖分析或调度控制 |
 🏷️ 项目信息
 语言：Python
 
