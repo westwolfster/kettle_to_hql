@@ -45,12 +45,13 @@ python kettle_to_hql_general.py --zip C:\Users\westw\Downloads\20260726.zip --ou
 ### 处理规则
 #### 非核心组件处理
 - [ ] 时间参数组件
-直接忽略，不做任何处理
+  不做任何处理
 - [ ] 数据到达等待检查组件（等待条件 SQL / MySQL 元数据库部分）
-不处理 SQL，在该组件位置以注释形式体现
+  不处理 SQL，在该组件位置以注释形式体现
 - [ ] MySQL 日志写入组件
-不处理 SQL，提取插入语句中的 table_name 字段，以注释形式体现
-- [ ] MySQL 下游采集触发组件：不处理 SQL，提取插入语句中的 table_name 字段，以注释形式体现
+  不处理 SQL，提取插入语句中的 table_name 字段，以注释形式体现
+- [ ] MySQL 下游采集触发组件
+  不处理 SQL，提取插入语句中的 table_name 字段，以注释形式体现
 #### 核心 HIVE 业务 SQL 处理
 - 移除 ****~~set 语句~~****
 - 所有表名统一改为小写
