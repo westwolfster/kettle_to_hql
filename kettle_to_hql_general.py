@@ -176,6 +176,7 @@ def rewrite_table_name(raw: str) -> str:
 
     - 无模式名：使用全局 SCHEMA_BASE + "_dev"
     - 有模式名：在原模式名后加 "_dev"（已是 _dev 则不重复加）
+    - 临时表（tmp_ / temp_ 开头）：统一改为 temp_ 前缀
     """
     name = raw.strip('`"')
     lower = name.lower()
@@ -183,10 +184,15 @@ def rewrite_table_name(raw: str) -> str:
 
     if "." in lower:
         schema, tbl = lower.rsplit(".", 1)
+        # 临时表：tmp_ → temp_
+        if tbl.startswith(("tmp_", "temp_")):
+            clean = re.sub(r"^(tmp_|temp_)", "", tbl)
+            tbl = f"temp_{clean}"
         if schema.endswith("_dev"):
             return f"{schema}.{tbl}"
         return f"{schema}_dev.{tbl}"
 
+    # 无模式名
     if lower.startswith(("tmp_", "temp_")):
         clean = re.sub(r"^(tmp_|temp_)", "", lower)
         return f"{schema_dev}.temp_{clean}"
