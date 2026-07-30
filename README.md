@@ -15,7 +15,7 @@
 | 工具名称 | 脚本文件 | 主要功能 |
 |---------|----------|----------|
 | **星海 HQL 装修工具** | `kettle_to_hql_general.py` | 将能力开放门户导出的 Kettle ETL 流程 XML 转换为符合星海规范的 HQL 脚本 |
-| **星海逻辑模型转换工具** | `convert_model_detail.py` | 将模型详情 Excel 转换为可直接导入星海数据中台的逻辑模型文件 |
+| **星海逻辑模型转换工具** | `convert_model.py` | 将模型详情 Excel 转换为可直接导入星海数据中台的逻辑模型文件 |
 
 ---
 
@@ -61,18 +61,19 @@ python kettle_to_hql_general.py --zip C:\Users\westw\Downloads\20260726.zip --ou
 - 保留原脚本中的所有注释（格式、位置、内容不变）
 - 将脚本中出现的 ~~ifnull~~ 函数统一替换为 ***coalesce***
 - 在流程输出的 SQL 脚本末尾，如果没有删除本流程建立的临时表语句，将自动新增删除所有本流程临时表的语句
-## 二、星海逻辑模型转换工具（convert_model_detail.py）
+## 二、星海逻辑模型转换工具（convert_model.py）
 ### 工具简介
-`convert_model_detail.py` 用于将能力开放门户导出的 模型详情-库：tenant_user-表：table_name.xls，转换并生成星海数据中台可直接导入的逻辑模型Excel文件。
+`convert_model.py` 用于将能力开放门户导出的 模型详情-库：tenant_user-表：table_name.xls，转换并生成星海数据中台可直接导入的逻辑模型Excel文件。
 ### 使用方法
+#### 单个文件
 ```bash
-python convert_model_detail.py <输入文件路径> <输出文件路径>
+python convert_model.py --file "模型详情-库：ap_tenant_user7-表：kj_e_partner_order_d.xls" --output "c:\temp"
+```
+#### zip 包（里面可放多个结构相同的 xls/xlsx）
+```bash
+python convert_model.py --zip "models.zip" --output "c:\temp"
 ```
 
-示例：
-python convert_model_detail.py "C:\Users\xxx\Desktop\模型详情-库：ap_tenant_user7-表：hall_estimate_d.xls" "D:\output"
-
-无参数运行时，工具会自动查找桌面上的： 模型详情*.xls
 
 ### 依赖说明
 工具依赖以下 Python 包
